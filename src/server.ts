@@ -1,24 +1,18 @@
 //Dependences
 import express from "express"
 import bodyParser from "body-parser"
+//DB dependences
+import "./database";
+import {routes} from "./routes"
 //Static Config
 const port = 3333
 
 //Instacing Express
 const app = express()
-app.use(bodyParser.json())
+app.use(express.json())
 
-//Routes
-app.get('/', (req, res)=>{
-    return res.json({
-        obj:"1",
-        obj2:"2"
-    })
-})
-
-app.post('/', (req, res) => {   
-    return res.json({"request":req.params})
-})
+//routes
+app.use(routes)
 
 //Starting 
 app.listen(port, () => console.log(`Server running on port ${port}`))
