@@ -1,4 +1,4 @@
-import {Request, Response} from "express"
+import {Request, response, Response} from "express"
 import { SettingsService } from "../services/SettingsServices"
 
 class SettingsController {
@@ -16,7 +16,28 @@ class SettingsController {
             })
         }
         
-    }        
+    }
+    
+    async findByUserName(req:Request, res:Response){
+        const {username} = req.params
+
+        const settingsService = new SettingsService()
+
+        const settings = await settingsService.findByUsername(username)
+        
+        return response.json(settings)
+    }
+
+    async update(req:Request, res:Response){
+        const {username} = req.params
+        const {chat} = req.body
+        
+        const settingsService = new SettingsService()
+
+        const settings = await settingsService.update(username, chat)
+        
+        return res.json(settings)
+    }
 }
 
 export { SettingsController }
