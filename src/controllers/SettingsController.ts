@@ -25,7 +25,7 @@ class SettingsController {
 
         const settings = await settingsService.findByUsername(username)
         
-        return response.json(settings)
+        return res.json(settings)
     }
 
     async update(req:Request, res:Response){
