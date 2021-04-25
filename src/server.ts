@@ -3,6 +3,7 @@ import {http} from './http'
 
 //Import Websocket.ts
 import "./websocket/client"
+import "./websocket/admin"
 
 //Static Config
 const port = 3333

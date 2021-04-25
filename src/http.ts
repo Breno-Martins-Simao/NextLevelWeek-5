@@ -25,6 +25,9 @@ app.set("view engine", "html")
 app.get("/pages/client", (req, res)=>{
     return res.render("html/client.html")
 })
+app.get("/pages/admin", (req, res)=>{
+    return res.render("html/admin.html")
+})
 
 const http = createServer(app)//Creating Protocol HTTP
 const io = new Server(http)//Creating Protocol WebSocket (WS)
